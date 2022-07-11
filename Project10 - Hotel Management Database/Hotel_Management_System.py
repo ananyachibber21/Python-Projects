@@ -26,7 +26,7 @@ def room_plan():
     print('CP[room including only breakfast]')
     print('MAP[room including one meal and breakfast]')
     print('EP[no meals included]')
-    g=input('Enter the Room Plan of your choice :')
+    g=input('Enter the Room Plan of your choice : ')
     if g=='AP':
         q=5000
     elif g=='CP':
@@ -36,28 +36,27 @@ def room_plan():
     elif g=='EP':
         s4=meal()
     m=q+s4  
-    return(m)
     query=("insert into resort(Room_Type) values(%s)")
-    data=(g)
+    data=([g])
     cursor.execute(query,data)
     db.commit()
+    return(m)
 
 def meal():
-        print('breakfast=1000/-'
-              'lunch=1200/-'
-              'dinner=1500/-'
-              'none=0/-')
-        h=input('Choose the type of Meal:')
-        if h=="breakfast":
-           c=1000
-        elif h=="lunch":
-            c=1200
-        elif h=='dinner':
-            c=1500
-        elif h=='none':
-            c=0
-       
-        return(c)
+    print('breakfast=1000/-')
+    print('lunch=1200/-')
+    print('dinner=1500/-')
+    print('none=0/-')
+    h=input('Choose the type of Meal:')
+    if h=="breakfast":
+        c=1000
+    elif h=="lunch":
+        c=1200
+    elif h=='dinner':
+        c=1500
+    elif h=='none':
+        c=0       
+    return(c)
          
 def laundry_charge():
     x=input('Enter y or n: ')
@@ -67,31 +66,30 @@ def laundry_charge():
         j=200*v
     elif x=='n':
         j=0
-    return(j)
     query=("insert into resort(Laundry) values(%s)")
-    data=(x)
+    data=([x])
     cursor.execute(query,data)
-    db.commit()  
-    
+    db.commit() 
+    return(j)    
                  
 def club():
-        print('1.billiards, 2.swimming pool, 3.spa , 4.gym, 5.steam bath' , end="")
-        i=int(input('Enter your choice: '))
-        if(i==1):
-              r=600
-        elif(i==2):
-              r=400
-        elif(i==3):
-              r=800
-        elif(i==4):
-              r=400
-        elif (i==5):
-              r=1000
-        return(r)
-        query=("insert into resort(Club) values(%s)")
-        data=(i)
-        cursor.execute(query,data)
-        db.commit()  
+    print('1.billiards, 2.swimming pool, 3.spa , 4.gym, 5.steam bath' , end="")
+    i=int(input('Enter your choice: '))
+    if(i==1):
+        r=600
+    elif(i==2):
+        r=400
+    elif(i==3):
+        r=800
+    elif(i==4):
+        r=400
+    elif (i==5):
+        r=1000
+    query=("insert into resort(Club) values(%s)")
+    data=([i])
+    cursor.execute(query,data)
+    db.commit() 
+    return(r) 
 
 while True:
     n=int(input("Enter choice:-"))
